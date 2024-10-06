@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { User } from '../models/User';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import { request } from 'http';
 
 const JWT_SECRET = 'your_jwt_secret';
 const TOKEN_EXPIRATION = '30d';
@@ -30,4 +31,8 @@ export const login = async (req: Request, res: Response) => {
 
   const token = jwt.sign({ userId: user._id }, JWT_SECRET, { expiresIn: TOKEN_EXPIRATION });
   res.json({ token });
+};
+
+export const testConnection = async (req: Request, res: Response) => {
+  res.status(200).send("<h1>Hello World!</h1>")
 };

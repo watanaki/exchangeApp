@@ -1,4 +1,4 @@
-import { createMemoryHistory, createRouter, RouteRecordRaw } from 'vue-router';
+import { createWebHistory, createRouter, RouteRecordRaw } from 'vue-router';
 
 import CurrencyExchangeView from '../views/CurrencyExchangeView.vue';
 import HomeView from '../views/HomeView.vue';
@@ -8,18 +8,18 @@ import Login from '../components/Login.vue';
 import Register from '../components/Register.vue';
 
 const routes: RouteRecordRaw[] = [
-  { path: '/', name: 'Home', component: HomeView },
-  { path: '/exchange', name: 'CurrencyExchange', component: CurrencyExchangeView },
-  { path: '/news', name: 'News', component: NewsView },
-  { path: '/news/:id', name: 'NewsDetial', component: NewsDetailView },
-  // { path: '/login', name: 'Login', component: Login },
-  // { path: '/register', name: 'Register', component: Register },
+  { path: '/', name: 'home', component: HomeView },
+  { path: '/exchange', name: 'currencyExchange', component: CurrencyExchangeView },
+  { path: '/news', name: 'news', component: NewsView },
+  { path: '/news/:id', name: 'newsDetial', component: NewsDetailView },
+  // { path: '/login', name: 'login', component: Login },
+  // { path: '/register', name: 'register', component: Register },
 
 ]
 
 
 const router = createRouter({
-  history: createMemoryHistory(),
+  history: createWebHistory(),
   routes
 })
 

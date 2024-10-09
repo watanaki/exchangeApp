@@ -20,7 +20,9 @@
 
       </el-header>
 
-      <el-main>Main</el-main>
+      <el-main>
+        <router-view class="content"></router-view>
+      </el-main>
 
     </el-container>
 
@@ -29,7 +31,42 @@
 </template>
 
 <script setup lang="ts">
+import { ref, watch } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+
+const router = useRouter();
+const route = useRoute();
+
+
+
+
+const activeIndex = ref(route.name?.toString() || 'home');
+
+watch(route, (newRoute) => {
+  activeIndex.value = newRoute.name?.toString() || 'home';
+});
+
+const handleSelect = (key: string) => {
+  router.push({
+    name: key,
+  })
+
+};
 
 </script>
 
-<style scoped></style>
+<style scoped>
+.el-menu-demo {
+  line-height: 60px;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+  padding: 20px;
+  box-sizing: border-box;
+}
+</style>
